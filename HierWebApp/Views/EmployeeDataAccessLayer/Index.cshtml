@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link data-require="datatable-css@1.10.7" data-semver="1.10.7" rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+
+<script data-require="jquery.js@1.11.3" data-semver="1.11.3" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script data-require="datatable.js@1.10.7" data-semver="1.10.7" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+
+<script data-require="angular-datatable.js@1.1.5" data-semver="1.1.5" src="~/Scripts/angular.datatable.min.js"></script>
+
+<script src="~/Scripts/test.js"></script>
+
+<div ng-app="Emp">
+    <div ng-controller="EmpController">
+
+        <!-- Main content -->
+        <section class="content" ng-init="GetEmployeeList()">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title" style="color:#2A2AC0"><b>Employees</b></h3>
+                                <a href="/EmployeeDataAccessLayer/Create" class="btn btn-sm btn-primary" style="float:right">Add New</a>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                          <th>City</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="b in EmployeeList track by $index">
+                                            <td>
+                                                {{b.EmployeeName}}
+                                            </td>
+                                          <td>
+                                                {{b.CityName}}
+                                            </td>
+                                          <td>
+                                              <a href="/EmployeeDataAccessLayer/Edit?id={{b.EmployeeId}}">Edit</a>
+                                              <a ng-click="PostDeleteEmployee(b.EmployeeId)">Delete</a>
+                                          </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+        </section>
+
+
+    </div>
+</div>

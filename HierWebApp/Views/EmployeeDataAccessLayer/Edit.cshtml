@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link data-require="datatable-css@1.10.7" data-semver="1.10.7" rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+
+<script data-require="jquery.js@1.11.3" data-semver="1.11.3" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script data-require="datatable.js@1.10.7" data-semver="1.10.7" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+
+<script data-require="angular-datatable.js@1.1.5" data-semver="1.1.5" src="~/Scripts/angular.datatable.min.js"></script>
+
+<script src="~/Scripts/test.js"></script>
+
+<div ng-app="Emp">
+    <div ng-controller="EmpController">
+
+        <!-- Main content -->
+        <section class="content" ng-init="GetCityList();GetEmployeeByID()">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title" style="color:#2A2AC0"><b>Employees</b></h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="control-label col-md-12">Name</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control" ng-model="emp.EmployeeName" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-12">Gender</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" ng-model="emp.Gender">
+                                            <option value="">-- Select Gender --</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-12">Designation</label>
+                                    <div class="col-md-4">
+                                        <input class="form-control" ng-model="emp.Designation" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-md-12">City</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" ng-model="emp.CityName">
+                                            <option value="-- Select City --">-- Select City --</option>
+
+                                            <option ng-repeat="city in CityList" value="{{city.CityName}}">{{city.CityName}}</option>}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button ng-click="PostEditEmployee()" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+        </section>
+
+
+    </div>
+</div>
